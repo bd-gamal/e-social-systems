@@ -5,7 +5,7 @@
     <title>JSP - Hello World</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import "tailwindcss.com";
+        @import "tailwindcss";
     </style>
 </head>
 <body>

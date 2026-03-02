@@ -1,4 +1,4 @@
-package org.example.esocialsystems;
+package org.example.esocialsystems.servlets;
 
 import java.io.*;
 
