@@ -1,4 +1,4 @@
-package org.example.esocialsystems.models;
+package com.esocial.esocialsystems.models;
 
 public class Employeur {
     private int id;
