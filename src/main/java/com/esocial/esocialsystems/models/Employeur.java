@@ -1,6 +1,12 @@
 package com.esocial.esocialsystems.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Employeur {
+    @Id
+    private int idEntity;
     private int id;
     private String raisonSociale;
     private String secteurActivite;
@@ -9,6 +15,16 @@ public class Employeur {
         this.id = id;
         this.raisonSociale = raisonSociale;
         this.secteurActivite = secteurActivite;
+    }
+
+    public Employeur() {}
+
+    public int getId1() {
+        return idEntity;
+    }
+
+    public void setId1(int id1) {
+        this.idEntity = id1;
     }
 
     public int getId() {
