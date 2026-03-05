@@ -30,7 +30,7 @@ public class EmployeurDao {
         }
     }
 
-    public Employeur findById(Long id) {
+    public Employeur findById(int id) {
         EntityManager em = JPAUtil.getEntityManager();
         try {
             return em.find(Employeur.class, id);

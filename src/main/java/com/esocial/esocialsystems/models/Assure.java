@@ -1,6 +1,11 @@
 package com.esocial.esocialsystems.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Assure {
+    @Id
     private int id;
     private String nom;
     private double salaireMensuel;
@@ -9,6 +14,11 @@ public class Assure {
         this.id = id;
         this.salaireMensuel = salaireMensuel;
         this.nom = nom;
+    }
+
+    public Assure() {}
+
+    public Assure(String nom, Double salaire, Employeur employeur) {
     }
 
     public int getId() {
@@ -33,5 +43,8 @@ public class Assure {
 
     public void setSalaireMensuel(double salaireMensuel) {
         this.salaireMensuel = salaireMensuel;
+    }
+
+    public void setEmployeur(Employeur employeur) {
     }
 }

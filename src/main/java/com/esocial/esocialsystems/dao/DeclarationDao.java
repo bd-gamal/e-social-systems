@@ -1,4 +1,38 @@
 package com.esocial.esocialsystems.dao;
 
+import com.esocial.esocialsystems.models.Declaration;
+import jakarta.persistence.EntityManager;
+
 public class DeclarationDao {
+
+    public void create(Declaration declaration) {
+        EntityManager em = JPAUtil.getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(declaration);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw e;
+        } finally {
+            em.close();
+        }
+    }
+
+    public Integer countByEmployeurAndMoisAndAnnee(int employeurId, int mois, int annee) {
+        EntityManager em = JPAUtil.getEntityManager();
+        try {
+            return em.createQuery(
+                            "SELECT COUNT(d) FROM declarations d " +
+                                    "WHERE d.employeur.id = :empId AND d.mois = :mois AND d.annee = :annee", int.class)
+                    .setParameter("empId", employeurId)
+                    .setParameter("mois", mois)
+                    .setParameter("annee", annee)
+                    .getSingleResult();
+        } finally {
+            em.close();
+        }
+    }
 }

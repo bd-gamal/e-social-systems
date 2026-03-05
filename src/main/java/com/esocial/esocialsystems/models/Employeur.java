@@ -19,6 +19,8 @@ public class Employeur {
 
     public Employeur() {}
 
+    public Employeur(String raisonSociale, String secteurActivite) {}
+
     public int getId1() {
         return idEntity;
     }
