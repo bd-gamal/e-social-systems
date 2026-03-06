@@ -1,67 +1,50 @@
 package com.esocial.esocialsystems.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "cotisations")
 public class Cotisation {
-    @Id
-    private int id;
-    private double montantSalarial;
-    private double montantPatronal;
-    private double totalCotisation;
 
-    public Cotisation(int id, double montantSalarial, double totalCotisation, double montantPatronal) {
-        this.id = id;
-        this.montantSalarial = montantSalarial;
-        this.totalCotisation = totalCotisation;
-        this.montantPatronal = montantPatronal;
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "assure_id", nullable = false)
+    private Assure assure;
+
+    @ManyToOne
+    @JoinColumn(name = "declaration_id", nullable = false)
+    private Declaration declaration;
+
+    @Column(name = "base_calcul", nullable = false)
+    private double baseCalcul;
+
+    @Column(name = "montant_salarial", nullable = false)
+    private double montantSalarial;
+
+    @Column(name = "montant_patronal", nullable = false)
+    private double montantPatronal;
 
     public Cotisation() {}
 
-    public Cotisation(Assure assure, Declaration declaration, double baseCalcul, double montantSalarial, double montantPatronal) {
-    }
+    // Getters et Setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
-    public int getId() {
-        return id;
-    }
+    public Assure getAssure() { return assure; }
+    public void setAssure(Assure assure) { this.assure = assure; }
 
-    public double getMontantSalarial() {
-        return montantSalarial;
-    }
+    public Declaration getDeclaration() { return declaration; }
+    public void setDeclaration(Declaration declaration) { this.declaration = declaration; }
 
-    public double getMontantPatronal() {
-        return montantPatronal;
-    }
+    public double getBaseCalcul() { return baseCalcul; }
+    public void setBaseCalcul(double baseCalcul) { this.baseCalcul = baseCalcul; }
 
-    public double getTotalCotisation() {
-        return totalCotisation;
-    }
+    public double getMontantSalarial() { return montantSalarial; }
+    public void setMontantSalarial(double montantSalarial) { this.montantSalarial = montantSalarial; }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setMontantSalarial(double montantSalarial) {
-        this.montantSalarial = montantSalarial;
-    }
-
-    public void setMontantPatronal(double montantPatronal) {
-        this.montantPatronal = montantPatronal;
-    }
-
-    public void setTotalCotisation(double totalCotisation) {
-        this.totalCotisation = totalCotisation;
-    }
-
-    public void setAssure(Assure assure) {
-
-    }
-
-    public void setDeclaration(Declaration declaration) {
-    }
-
-    public void setBaseCalcul(double baseCalcul) {
-    }
+    public double getMontantPatronal() { return montantPatronal; }
+    public void setMontantPatronal(double montantPatronal) { this.montantPatronal = montantPatronal; }
 }
