@@ -32,4 +32,22 @@ public class CotisationDao {
             em.close();
         }
     }
+
+    public Double calculerTotalParEmployeur(int employeurId) {
+        EntityManager em = JPAUtil.getEntityManager();
+        try {
+            Double total = em.createQuery(
+                            "SELECT SUM(c.montantSalarial + c.montantPatronal) " +
+                                    "FROM Cotisation c WHERE c.declaration.employeur.id = :empId", Double.class)
+                    .setParameter("empId", employeurId)
+                    .getSingleResult();
+
+            if (total == null) {
+                return 0.0;
+            }
+            return total;
+        } finally {
+            em.close();
+        }
+    }
 }

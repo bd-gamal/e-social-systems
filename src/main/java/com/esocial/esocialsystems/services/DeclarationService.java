@@ -5,6 +5,7 @@ import com.esocial.esocialsystems.dao.EmployeurDao;
 import com.esocial.esocialsystems.models.Declaration;
 import com.esocial.esocialsystems.models.Employeur;
 import java.time.LocalDate;
+import java.util.List;
 
 public class DeclarationService {
     private DeclarationDao declarationDao = new DeclarationDao();
@@ -33,5 +34,9 @@ public class DeclarationService {
 
         declarationDao.create(declaration);
         return declaration;
+    }
+
+    public List<Declaration> consulterLesDeclarations() {
+        return declarationDao.findAll();
     }
 }

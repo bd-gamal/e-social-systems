@@ -15,6 +15,10 @@ public class CotisationService {
     private static final double TAUX_PATRONAL = 0.0898;
     private static final double PLAFOND_SALAIRE = 6000.0;
 
+    public Double obtenirTotalCotisationsEmployeur(int employeurId) {
+        return cotisationDao.calculerTotalParEmployeur(employeurId);
+    }
+
     public void calculerEtEnregistrer(Declaration declaration) {
         List<Assure> assures = assureDao.findByEmployeur(declaration.getEmployeur().getId());
 

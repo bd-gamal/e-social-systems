@@ -3,6 +3,8 @@ package com.esocial.esocialsystems.dao;
 import com.esocial.esocialsystems.models.Declaration;
 import jakarta.persistence.EntityManager;
 
+import java.util.List;
+
 public class DeclarationDao {
 
     public void create(Declaration declaration) {
@@ -21,12 +23,21 @@ public class DeclarationDao {
         }
     }
 
+    public List<Declaration> findAll() {
+        EntityManager em = JPAUtil.getEntityManager();
+        try {
+            return em.createQuery("SELECT d FROM Declaration d", Declaration.class).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
     public Integer countByEmployeurAndMoisAndAnnee(int employeurId, int mois, int annee) {
         EntityManager em = JPAUtil.getEntityManager();
         try {
             return em.createQuery(
-                            "SELECT COUNT(d) FROM declarations d " +
-                                    "WHERE d.employeur.id = :empId AND d.mois = :mois AND d.annee = :annee", int.class)
+                            "SELECT COUNT(d.id) FROM Declaration d " +
+                                    "WHERE d.employeur.id = :empId AND d.mois = :mois AND d.annee = :annee", Integer.class)
                     .setParameter("empId", employeurId)
                     .setParameter("mois", mois)
                     .setParameter("annee", annee)

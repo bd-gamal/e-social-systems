@@ -23,6 +23,19 @@ public class AssureService {
         assureDao.create(assure);
     }
 
+    public void modifierSalaire(int assureId, double nouveauSalaire) throws Exception {
+        Assure assure = assureDao.findById(assureId);
+        if (assure == null) {
+            throw new Exception("Assuré introuvable.");
+        }
+        assure.setSalaireMensuel(nouveauSalaire);
+        assureDao.update(assure);
+    }
+
+    public List<Assure> listerTous() {
+        return assureDao.findAll();
+    }
+
     public List<Assure> listerParEmployeur(int employeurId) {
         return assureDao.findByEmployeur(employeurId);
     }
