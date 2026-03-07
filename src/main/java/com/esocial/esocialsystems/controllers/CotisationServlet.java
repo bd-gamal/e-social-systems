@@ -1,4 +1,4 @@
-package com.esocial.esocialsystems.servlets;
+package com.esocial.esocialsystems.controllers;
 
 import com.esocial.esocialsystems.models.Declaration;
 import com.esocial.esocialsystems.services.CotisationService;
