@@ -35,13 +35,15 @@ public class DeclarationDao {
     public Integer countByEmployeurAndMoisAndAnnee(int employeurId, int mois, int annee) {
         EntityManager em = JPAUtil.getEntityManager();
         try {
-            return em.createQuery(
-                            "SELECT COUNT(d.id) FROM Declaration d " +
-                                    "WHERE d.employeur.id = :empId AND d.mois = :mois AND d.annee = :annee", Integer.class)
+            Long count = em.createQuery(
+                                 "SELECT COUNT(d.id) FROM Declaration d " +
+                                    "WHERE d.employeur.id = :empId AND d.mois = :mois AND d.annee = :annee", Long.class)
                     .setParameter("empId", employeurId)
                     .setParameter("mois", mois)
                     .setParameter("annee", annee)
                     .getSingleResult();
+
+            return count.intValue();
         } finally {
             em.close();
         }

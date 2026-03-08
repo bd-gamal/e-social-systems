@@ -1,3 +1,4 @@
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <nav class="bg-blue-800 p-4 shadow-md">
     <div class="max-w-6xl mx-auto flex justify-between items-center text-white">

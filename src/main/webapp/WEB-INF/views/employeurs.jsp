@@ -1,5 +1,5 @@
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,6 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 p-8">
+<jsp:include page="/WEB-INF/views/navbar.jsp" />
+
 <div class="max-w-6xl mx-auto space-y-8">
 
     <div class="bg-white p-6 rounded shadow">
@@ -48,5 +50,4 @@
     </div>
 </div>
 </body>
-<jsp:include page="/WEB-INF/views/navbar.jsp" />
 </html>

@@ -7,6 +7,10 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <class>com.esocial.esocialsystems.models.User</class>
+        <class>com.esocial.esocialsystems.models.Employeur</class>
+        <class>com.esocial.esocialsystems.models.Assure</class>
+        <class>com.esocial.esocialsystems.models.Declaration</class>
+        <class>com.esocial.esocialsystems.models.Cotisation</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>

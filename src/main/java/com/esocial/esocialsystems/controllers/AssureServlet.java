@@ -22,12 +22,16 @@ public class AssureServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("employeurs", employeurService.listerEmployeurs());
+
         String employeurIdStr = request.getParameter("employeurId");
 
         if (employeurIdStr != null && !employeurIdStr.isEmpty()) {
             int employeurId = Integer.parseInt(employeurIdStr);
             request.setAttribute("assures", assureService.listerParEmployeur(employeurId));
             request.setAttribute("employeur", employeurService.trouverParId(employeurId));
+        } else {
+            request.setAttribute("assures", assureService.listerTous());
         }
 
         request.getRequestDispatcher("/WEB-INF/views/assures.jsp").forward(request, response);
