@@ -30,7 +30,7 @@ public class AssureServlet extends HttpServlet {
             request.setAttribute("employeur", employeurService.trouverParId(employeurId));
         }
 
-        request.getRequestDispatcher("/views/assures.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/views/assures.jsp").forward(request, response);
     }
 
     @Override

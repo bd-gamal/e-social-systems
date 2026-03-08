@@ -20,7 +20,7 @@ public class EmployeurServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("employeurs", employeurService.listerEmployeurs());
-        request.getRequestDispatcher("/views/employeurs.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/views/employeurs.jsp").forward(request, response);
     }
 
     @Override

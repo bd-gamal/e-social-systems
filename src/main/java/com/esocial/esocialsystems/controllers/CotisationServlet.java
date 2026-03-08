@@ -27,7 +27,7 @@ public class CotisationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("employeurs", employeurService.listerEmployeurs());
-        request.getRequestDispatcher("/views/cotisations.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/views/cotisations.jsp").forward(request, response);
     }
 
     @Override
